@@ -9,7 +9,8 @@ This repo consists on a very basic web server boilerplate based on NodeJS and Ex
 - Extracting entities from an incoming request
 - Passing parameters between Cisco CVP and Dialogflow
 - Triggering events in the target DialogFlow agent
-                                                                                                             
+
+```                                                                                       
 +-------------------------+                                 +------------------------+                       
 |                         | Call flow variable (ID, etc) -> |                        |                       
 |                         |  ------------------------------ |                        |                       
@@ -33,6 +34,7 @@ This repo consists on a very basic web server boilerplate based on NodeJS and Ex
                                                       |  CRM   |    |  API   |    |  3rd Party |             
                                                       +--------+    +--------+    |    API     |             
                                                                                   +------------
+```
 
 # Setting up Google Dialogflow
 

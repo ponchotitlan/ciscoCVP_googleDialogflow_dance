@@ -17,11 +17,14 @@ Additionally, CVP can retrieve general parameters from DialogFlow. This is usefu
 
 The following CallStudio diagram is an example of a basic struture for bidirectional interaction:
 
+![CVP General Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/cvp_01.PNG)
 
 The following parameters of the "Voice Element - DialogFlow" block enable the invocation and variable sending to DialogFlow:
 - Service Account ID: Name of the DialogFlow Agent
 - Initiation Text: Any given text which matches the "Training Phrase" of an intent within the agent aforementioned
 - Dialogflow.queryParams.payload: Any given value to be passed to DialogFlow (Ex. caller ANI, session variable from call flow, etc)
+
+![CVP General Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/cvp_02.PNG)
 
 # Giving control back to Cisco CVP
 
@@ -32,6 +35,8 @@ The following Decision Editor statement polls for the intent named "my_return_in
 ```
 If element data from element "df_01" and variable name "intent" equals (string) the string "my_return_intent", (action) then return (Exit State) OperationComplete
 ```
+
+![CVP General Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/cvp_03.PNG)
 
 IMPORTANT! The intent name is passed as low-caps always, regardless of the original name having upper-caps.
 
@@ -49,6 +54,8 @@ JSONPathUtil.eval( val, path);
 
 The output can be subsequently connected to a "if" block for evaluation of the retrieved value in terms of call control. A use case is that, if the DialogFlow external operation was successful, the flag "end_call" is received, but if the opposite happened, the flag "transfer" is received.
 The following Decision Editor statements performs the evaluation aforementioned:
+
+![CVP General Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/cvp_04.PNG)
 
 Finally, based on the exit state, the call flow can be routed to different subflows.
 
