@@ -13,7 +13,7 @@ const config = require('./config')
 //Custom module for basic Base64 authentication
 const auth = require('./modules/auth');
 //Custom module for logic handling between this Web Server, DialogFlow and Cisco CVP
-const gateway = require('./modules/handler')
+const handler = require('./modules/handler')
 
 //Express Web server instance
 const app = express();
@@ -33,7 +33,7 @@ const app = express();
  * 
  */
 app.post('/webhook', auth, express.json(), function (req, res) {
-  gateway(req, res);
+  handler(req, res);
 })
 
 /**
