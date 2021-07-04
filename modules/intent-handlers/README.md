@@ -26,12 +26,14 @@
                                                                +------------+             
 ```  
 
-1. Retrieve parameters and entities from your intent
+1. Retrieve parameters and entities from your intent:
+
 A good practice is to have a shared context between all the intents of interest within your agent, so that all variables (entities & parameters) and easily retrieved.
 The non-expired contexts are stored in the agent.contexts dictionary within the agent instance.
 IMPORTANT! The parameter's names are case sensitive. They must match those defined in the Web platform.
 
-2. Retrieve variables sent from Cisco CVP
+2. Retrieve variables sent from Cisco CVP:
+
 All variables defined in the DialogFlow block in CallStudio (later deployed in CVA) are retrieved from the originalRequest.payload portion of the agent instance.
 If there are no variables passed (for example, when the agent is invoked from another source different from a phone call, like a chat agent), the originalRequest.payload portion will be undefined.
 
@@ -42,7 +44,8 @@ If there are no variables passed (for example, when the agent is invoked from an
     }
 ``` 
 
-3. Send a parameter back to Cisco CVP
+3. Send a parameter back to Cisco CVP:
+
 It is possible to send the data retrieved back to Cisco CVP for further call processing, or a flag value indicating the success or failure of the API operation in order to continue with the call flow accordingly.
 A custom context must be created and assigned to the agent instance.
 Within the context, it is possible to define several parameters as required.
@@ -61,7 +64,8 @@ The following example creates a context named "return_context" and assigns the p
              agent.context.set(contextSubs);
 ``` 
 
-4. Trigger an event within DialogFlow
+4. Trigger an event within DialogFlow:
+
 The setFollowupEvent method triggers a specific intent within the agent.
 The intent to trigger must have the tag specified in the "name" parameter of this function within the "event" field in the Web platform.
 Additionally, this triggered intent can render dynamic text.
