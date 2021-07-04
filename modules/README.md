@@ -4,6 +4,7 @@ The Cisco CallStudio flow designer has with specific blocks for interaction with
 It is possible to send parameters from CVP to DialogFlow with this block for the use cases in which a variable previously retrieved in the call flow is required for a DialogFlow TTS prompt or API operation (ex. retrieve customer balance with calling ANI, etc).
 Additionally, CVP can retrieve general parameters from DialogFlow. This is useful for use cases such as working with retrieved API data (ex. user identified - Customer ID for the rest of the call flow) or deciding on the rest of the call flow with a control variable (ex. transfer the call to an agent or ending the call).
 
+```
 +-------------------------+                                 +------------------------+                       
 |                         | Call flow variable (ID, etc) -> |                        |                       
 |                         |  ------------------------------ |                        |                       
@@ -12,6 +13,7 @@ Additionally, CVP can retrieve general parameters from DialogFlow. This is usefu
 |                         |    <- API result / Flag for     |                        |                       
 +-------------------------+    call flow control (Ex.       +------------------------+                       
                                route call to agent)                 |        |                               
+```
 
 The following CallStudio diagram is an example of a basic struture for bidirectional interaction:
 
