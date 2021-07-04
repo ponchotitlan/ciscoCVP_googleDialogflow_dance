@@ -85,7 +85,7 @@
               agent.setFollowupEvent({
                 name: 'return_event',
                 parameters: {
-                    message: `<speak>Your prompt goes here. It can include the retrieved value from your API as normal text for TTS processing. For example: the retrieved data is ${my_retrieved_value_from_api}</speak>`
+                    mymessage: `<speak>Your prompt goes here. It can include the retrieved value from your API as normal text for TTS processing. For example: the retrieved data is ${my_retrieved_value_from_api}</speak>`
                 }        
             });
         })
