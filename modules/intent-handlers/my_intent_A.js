@@ -36,8 +36,8 @@
      * If there are no variables passed (for example, when the agent is invoked from another source different from a phone call, like a chat agent), the originalRequest.payload portion will be undefined.
      * 
      */
-    let SucSuscriptor = agent.originalRequest.payload.payload; 
-    if (SucSuscriptor === undefined) {
+    let parameter_sent_from_CVP = agent.originalRequest.payload.payload; 
+    if (parameter_sent_from_CVP === undefined) {
         // No variables were passed from Cisco CVP, or the intent was invoked via a different source than a phone call, such as a chat agent
     }
 
