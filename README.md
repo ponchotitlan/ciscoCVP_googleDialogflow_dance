@@ -19,13 +19,17 @@ The usage of this Middleware with DialogFlow allows the IVR designer to **decoup
 
 Think of the following scenario:
 
-![Architecture Diagram with CVP](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_01.PNG)
+![Architecture Diagram with CVP](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_01.jpg)
+
+(Agent icon designed by [Freepik.es]("https://www.flaticon.es/"))
 
 The telephony part of the architecture is agnostic to the logic on the DialogFlow side. The single CVP application is invoked, and it triggers all the conversational experience and data handling on the side of DialogFlow and this Middleware.
 
 Moreover, the design of this middleware enables a plug-n-play operation, in which every interaction is an independent NodeJS script mapped to an individual intent within the DialogFlow agent:
 
-![Middleware Architecture Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_02.PNG)
+![Middleware Architecture Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_02.jpg)
+
+(JS script icon designed by [Freepik.es]("https://www.flaticon.es/"))
 
 # Example use cases
 
