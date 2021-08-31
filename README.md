@@ -101,7 +101,7 @@ Communication from this Web Server with DialogFlow can be established via a test
 
 # Cisco CVP setup
 
-The details for CVP app setup via CallStudio are explained in [this README](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/tree/main/modules).
+The details for CVP app setup via CallStudio are explained in [this repo's Wiki entry](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/wiki/%F0%9F%91%A9%E2%80%8D%F0%9F%9A%80-Setting-up-the-interaction-between-Cisco-CVP-and-Google-DialogFlow).
 
 Please check this repo's Wiki for a complete use case example, showcasing a CVP application designed in CallStudio for the purpose.
 
