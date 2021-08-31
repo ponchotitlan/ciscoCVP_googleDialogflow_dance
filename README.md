@@ -2,42 +2,38 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/ponchotitlan/ciscoCVP_googleDialogflow_dance)
 
-Google Dialogflow is a groundbreaking technology for delivering ASR/TTS conversational experiences within the customer interaction. Instead of the ol'reilable DTMF after "Press 1 for Tech Support, press 2 for sales, or wait in the line for an agent ...", an IVR can ask "How can I help you?", and then enable the user to say "My internet is not working!" so that the call is routed to the best flow option. Moreover, the Google DialogFlow platform can deliver TTS with a wide variety of top-notch voices using the Wavenet technology.
+Google Dialogflow is a groundbreaking technology for delivering ASR/TTS conversational experiences within the customer interaction. Instead of the ol'reliable DTMF after "Press 1 for Tech Support, press 2 for sales, or wait in the line for an agent ...", an IVR can ask "How can I help you?", and then enable the user to say "My internet is not working!" so that the call is routed to the best flow option. Moreover, the Google DialogFlow platform can deliver TTS with a wide variety of top-notch voices using the Wavenet technology.
 
 Cisco Contact Center solutions can benefit from this platform in order to deliver next-gen IVR experiences for all verticals.
 
-This repo consists on a very basic web server boilerplate based on NodeJS and Express for exploring the interaction between Google and Cisco. The web server contemplates the following use cases:
+This repo consists on a web server boilerplate based on NodeJS and Express for exploring the interaction between Google and Cisco **in a modular, plug-n-play fashion**. The web server contemplates the following use cases:
 
 - Receiving POST requests from a DialogFlow agent with basic authentication
-- Extracting entities from an incoming request
+- Extracting entities from a DialogFlow incoming request
 - Passing parameters between Cisco CVP and Dialogflow
 - Triggering events in the target DialogFlow agent
 
-```                                                                                       
-+-------------------------+                                 +------------------------+                       
-|                         | Call flow variable (ID, etc) -> |                        |                       
-|                         |  ------------------------------ |                        |                       
-|        Cisco CVP        |                                 |    Google DialogFlow   |                       
-|                         |  ------------------------------ |                        |                       
-|                         |    <- API result / Flag for     |                        |                       
-+-------------------------+    call flow control (Ex.       +------------------------+                       
-                               route call to agent)                 |        |                               
-                                                                    |        |    Webhooks                   
-                                        -> Intent params            |        |                               
-                                        <- API results/flags/prompt |        |                               
-                                                            +------------------------+                       
-                                                            |                        |                       
-                                                            |    NodeJS Web Server   |                       
-                                                            |    (Intent Handler)    |                       
-                                                            |                        |                       
-                                                            +------------------------+                       
-                                                              |          |         |                         
-                                                              |          |         |                         
-                                                      +--------+    +--------+    +------------+
-                                                      |  CRM   |    |  API   |    |  3rd Party |             
-                                                      +--------+    +--------+    |    API     |             
-                                                                                  +------------
-```
+# Motivation
+
+The usage of this Middleware with DialogFlow allows the IVR designer to **decouple the data logic from the call routing**. That is, it is possible to handle the input parameters, query sources (databases, APIs, etc) and data processing apart from the route that the call will follow (agent queues, CVP applications, etc). 
+
+Think of the following scenario:
+
+![Architecture Diagram with CVP](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_01.PNG)
+
+The telephony part of the architecture is agnostic to the logic on the DialogFlow side. The single CVP application is invoked, and it triggers all the conversational experience and data handling on the side of DialogFlow and this Middleware.
+
+Moreover, the design of this middleware enables a plug-n-play operation, in which every interaction is an independent NodeJS script mapped to an individual intent within the DialogFlow agent:
+
+![Middleware Architecture Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_02.PNG)
+
+# Example use cases
+
+- **Send information from CVP to DialogFlow for API-related operations**: CVP has knowledge of PSTN-related data such as DNIS, ANI, Incoming number, etc. DialogFlow doesn't know this information as it is decoupled from the PSTN world! This data can be useful for scenarios such as customer-related services, authentication, etc.
+
+- **Send information from DialogFlow to CVP for choice taking and generic data**: DialogFlow can gather data from the user's input, as well as APIs and 3rd Party services. For example, after authenticating a user with input data (name, address, etc) through an API call, the gathered user ID can be passed back to CVP for further call flow.
+
+- **Application granularity**: Specific use cases for the IVR (User authentication, Robo-booking, etc) can be designed entirely in DialogFlow and this middleware (conversational layer and API/3rd-party querying) and plugged to the call routing via CVP/VVB.
 
 # Setting up Google Dialogflow
 
@@ -53,24 +49,54 @@ This boilerplate can be useful in any of the architectures mentioned, as its mai
 
 Check the "modules" folder for more information regarding Cisco Call Studio configuration for information exchange with Google Dialogflow.
 
-# Running the Web Server
+# Middleware environment setup
 
-A custom module called "config.js" is provided in the project for specifying global parameters such as listening port, API addresses, DialogFlow credentials and more. It is necessary to fill the placeholders in order to prepare the server.
+Clone the contents of this repository in your environment:
+```
+git clone https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance.git
+```
+
+Install the libraries required for this repository by executing the following command in the same directory where the *package.json* file is located:
+```
+npm install
+```
+
+A custom module called *config.js* is provided in the project for specifying global parameters such as listening port, API addresses, DialogFlow credentials and more. It is necessary to fill the placeholders in order to prepare the server:
+```
+    //BASIC AUTHENTICATION USERNAME:PASSWORD FOR DIALOGFLOW WEBHOOK
+    DIALOGFLOW_USERNAME: '<your_dialogflow_fulfillment_username>',
+    DIALOGFLOW_PASSWORD: '<your_dialogflow_fulfillment_password>',
+
+    //WEB SERVER PARAMETERS
+    SERVER_PORT: '<your_web_server_listening_port>',
+
+    //API OR DATA SOURCE ADDRESSES
+    DATA_SOURCE_ADDRESS_1: '<your_datasource_address_1>',
+    DATA_SOURCE_ADDRESS_2: '<your_datasource_address_2>',
+    DATA_SOURCE_ADDRESS_3: '<your_datasource_address_3>'
+    . . .
+```
 
 This repo is intended as a boilerplate, hence all code samples have placeholders which need to be updated according to the specific application needs:
 
-- auth.js: Basic Base64 authentication module
-- handler.js: Interaction handler between DialogFlow and custom modules
-- intent-handlers/my_intent.js:  Module with logic for handling specific DialogFlow intent interaction with Cisco CVP and 3rd party data sources
+- **auth.js**: Basic Base64 authentication module
+- **handler.js**: Interaction handler between DialogFlow and custom modules
+- **intent-handlers/my_intent.js**:  Module with logic for handling specific DialogFlow intent interaction with Cisco CVP and 3rd party data sources
 
-The details are mentioned in the content of each file.
+**The details are mentioned in the content of each file.**
 
-The web server engine is Express, which is based on NodeJS. In order to exeute the server, the following command is required in the same location as the project root:
+# Middleware Web Server Running
+
+The web server engine is Express, which is based on NodeJS. In order to execute the server, the following command is required in the same location as the project root:
 
 ```
 node index.js
 ```
 
-Communication from this Web Server with DialogFlow can be established via a test tunnel service such as [ngrok](https://ngrok.com/) or with a formal proxy.
+Communication from this Web Server with DialogFlow can be established via a test tunnel service such as [ngrok](https://ngrok.com/) or with a formal proxy. The address must be setup in the *Fulfillment* page of the DialogFlow portal.
+
+# Cisco CVP setup
+
+Please check this repo's Wiki for a complete use case example, showcasing a CVP application designed in CallStudio for the purpose.
 
 Crafted with :heart: by [Alfonso Sandoval - Cisco](https://linkedin.com/in/asandovalros)
