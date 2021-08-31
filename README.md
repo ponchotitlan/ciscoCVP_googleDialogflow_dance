@@ -21,7 +21,7 @@ Think of the following scenario:
 
 ![Architecture Diagram with CVP](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_01.jpg)
 
-*Agent icon designed by [Freepik.es]("https://www.flaticon.es/")*
+*Agent icon designed by (freepik.es)["https://www.flaticon.es/"]*
 
 The telephony part of the architecture is agnostic to the logic on the DialogFlow side. The single CVP application is invoked, and it triggers all the conversational experience and data handling on the side of DialogFlow and this Middleware.
 
@@ -29,7 +29,7 @@ Moreover, the design of this middleware enables a plug-n-play operation, in whic
 
 ![Middleware Architecture Diagram](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/blob/main/screenshots/arch_02.jpg)
 
-*JS script icon designed by [Freepik.es]("https://www.flaticon.es/")*
+*JS script icon designed by (freepik.es)["https://www.flaticon.es/"]*
 
 # Example use cases
 
@@ -87,7 +87,7 @@ This repo is intended as a boilerplate, hence all code samples have placeholders
 - **handler.js**: Interaction handler between DialogFlow and custom modules
 - **intent-handlers/my_intent.js**:  Module with logic for handling specific DialogFlow intent interaction with Cisco CVP and 3rd party data sources
 
-**The details are mentioned in the content of each file.**
+**The details are mentioned in the content of each file and in (this README)[https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/tree/main/modules/intent-handlers]:**
 
 # Middleware Web Server Running
 
@@ -100,6 +100,8 @@ node index.js
 Communication from this Web Server with DialogFlow can be established via a test tunnel service such as [ngrok](https://ngrok.com/) or with a formal proxy. The address must be setup in the *Fulfillment* page of the DialogFlow portal.
 
 # Cisco CVP setup
+
+The details for CVP app setup via CallStudio are explained in [this README](https://github.com/ponchotitlan/ciscoCVP_googleDialogflow_dance/tree/main/modules).
 
 Please check this repo's Wiki for a complete use case example, showcasing a CVP application designed in CallStudio for the purpose.
 
