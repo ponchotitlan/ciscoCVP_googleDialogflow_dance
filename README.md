@@ -6,7 +6,7 @@ Google Dialogflow is a groundbreaking technology for delivering ASR/TTS conversa
 
 Cisco Contact Center solutions can benefit from this platform in order to deliver next-gen IVR experiences for all verticals.
 
-This repo consists on a web server boilerplate based on NodeJS and Express for exploring the interaction between Google and Cisco **in a modular, plug-n-play fashion**. The web server contemplates the following use cases:
+This repo consists on a *middleware boilerplate* based on NodeJS and Express for enabling the interaction between DialogFlow and Cisco CVP **in a modular, plug-n-play fashion**. The middleware contemplates the following use cases:
 
 - Receiving POST requests from a DialogFlow agent with basic authentication
 - Extracting entities from a DialogFlow incoming request
