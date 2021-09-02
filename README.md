@@ -2,11 +2,9 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/ponchotitlan/ciscoCVP_googleDialogflow_dance)
 
-Google Dialogflow is a groundbreaking technology for delivering ASR/TTS conversational experiences within the customer interaction. Instead of the ol'reliable DTMF after "Press 1 for Tech Support, press 2 for sales, or wait in the line for an agent ...", an IVR can ask "How can I help you?", and then enable the user to say "My internet is not working!" so that the call is routed to the best flow option. Moreover, the Google DialogFlow platform can deliver TTS with a wide variety of top-notch voices using the Wavenet technology.
+Google Dialogflow is a powerful technology for creating AI-driven conversational experiences. The usage of it along with Cisco Customer Voice Portal (CVP) and customer’s data sources is the perfect recipe for next-generation voice menus. However, out-of-the-box DialogFlow is very limited in terms of business logic. Nonetheless, these capabilities can be expanded with the power of code.
 
-Cisco Contact Center solutions can benefit from this platform in order to deliver next-gen IVR experiences for all verticals.
-
-This repo consists on a *middleware boilerplate* based on NodeJS and Express for enabling the interaction between DialogFlow and Cisco CVP **in a modular, plug-n-play fashion**. The middleware contemplates the following use cases:
+This repo consists on a *middleware boilerplate* based on NodeJS and Express for enabling the interaction between DialogFlow and Cisco CVP **in a modular, plug-n-play fashion** for the individual intents of the DialogFlow agent. The middleware contemplates the following use cases:
 
 - Receiving POST requests from a DialogFlow agent with basic authentication
 - Extracting entities from a DialogFlow incoming request
