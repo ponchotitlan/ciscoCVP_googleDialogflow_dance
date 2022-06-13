@@ -88,6 +88,7 @@
                     message: `<speak>Your prompt goes here. It can include the retrieved value from your API as normal text for TTS processing. For example: the retrieved data is ${my_retrieved_value_from_api}</speak>`
                 }        
             });
+            return agent.add('');
         })
         .catch(function (err) {
             // Handle the exception raised
