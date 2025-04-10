@@ -1,6 +1,7 @@
 # ciscoCVP_googleDialogflow_dance
-
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/ponchotitlan/ciscoCVP_googleDialogflow_dance)
+[![NodeJS](https://img.shields.io/badge/NodeJS-style=flat&logo=linux)](https://www.ciscolive.com/emea/learn/session-catalog.html?search=devnet-2224&search=devnet-2224#/)
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/ponchotitlan/ciscoCVP_googleDialogflow_dance)
+---
 
 Google Dialogflow is a powerful technology for creating AI-driven conversational experiences. The usage of it along with Cisco Customer Voice Portal (CVP) and customer’s data sources is the perfect recipe for next-generation voice menus. However, out-of-the-box DialogFlow is very limited in terms of business logic. Nonetheless, these capabilities can be expanded with the power of code.
 
